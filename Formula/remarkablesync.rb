@@ -11,14 +11,18 @@ class Remarkablesync < Formula
   depends_on "pkg-config"  # Required for building some Python packages
 
   def install
-    # Create a virtualenv and install the package with all dependencies
-    virtualenv_create(libexec, "python3.13")
-    system libexec/"bin/pip", "install", "-v", "--no-binary", ":all:",
-           "--ignore-installed", buildpath
+    # Get the python dependency
+    python3 = Formula["python@3.13"].opt_bin/"python3.13"
 
-    # Create wrapper script in bin
-    (bin/"RemarkableSync").write_env_script libexec/"bin/RemarkableSync",
-                                             PATH: "#{libexec}/bin:$PATH"
+    # Create virtualenv in libexec
+    system python3, "-m", "venv", libexec
+
+    # Install the package using pip in the virtualenv
+    system libexec/"bin/pip", "install", "--upgrade", "pip", "setuptools", "wheel"
+    system libexec/"bin/pip", "install", buildpath
+
+    # Create bin wrappers
+    bin.install_symlink libexec/"bin/RemarkableSync"
   end
 
   test do
