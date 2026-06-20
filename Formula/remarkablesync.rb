@@ -1,8 +1,8 @@
 class Remarkablesync < Formula
   desc "Backup and convert reMarkable tablet notebooks to PDF"
   homepage "https://github.com/JeffSteinbok/RemarkableSync"
-  url "https://github.com/JeffSteinbok/reMarkableSync/archive/refs/tags/v2.1.3.tar.gz"
-  sha256 "a08697bc5fececee8977ba2c765f8547243b7b41c53e2782e2408610ae6ae550"
+  url "https://github.com/JeffSteinbok/reMarkableSync/archive/refs/tags/v2.1.4.tar.gz"
+  sha256 "4a6749442d0acfc0f46a97d052dbfece76dd95f30d00306f11ef6066cc43ccb1"
   license "MIT"
   head "https://github.com/JeffSteinbok/RemarkableSync.git", branch: "main"
 
